@@ -1,3 +1,36 @@
 public class AY_CUENTAAHORROS extends AY_CUENTA {
+    private boolean activa;
 
+    public AY_CUENTAAHORROS(float saldo_Inicial, float tasaAnual) {
+        super(saldo_Inicial, tasaAnual); //Se refiere a la clase padre
+        this.activa = saldo >= 100;
+    }
+
+    @Override//Utilizo esto por la herencia
+    public void depositar(double cantidad) {
+        super.depositar(cantidad);
+        actualizarEstado();
+    }
+
+    @Override
+    public void retirar(double cantidad) {
+        if (!activa) {
+            System.out.println("La cuenta está inactiva. No puede retirar.");
+            return;
+        }
+        super.retirar(cantidad);
+        actualizarEstado();
+    }
+
+    private void actualizarEstado() {
+        activa = saldo >= 100;
+    }
+
+    public void imprimir() {
+        System.out.println("Saldo actual: $" + saldo);
+        System.out.println("Número de depósitos: "+ numeroDepositos);
+        System.out.println("Tasa anual: " + tasaAnual + "%");
+        System.out.println("Cuenta activa: " + (activa ? "Sí" : "No"));
+
+    }
 }

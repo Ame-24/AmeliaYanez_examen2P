@@ -4,8 +4,8 @@ public class AY_CUENTA {
     protected int numeroRetiros;
     protected float tasaAnual;
 
-    public AY_CUENTA(float saldoInicial, float tasaAnual) {
-        this.saldo = saldoInicial;
+    public AY_CUENTA(float saldo_Inicial, float tasaAnual) {
+        this.saldo = saldo_Inicial;
         this.tasaAnual = tasaAnual;
         this.numeroDepositos = 0;
         this.numeroRetiros = 0;
@@ -15,6 +15,8 @@ public class AY_CUENTA {
         if (cantidad > 0) {
             saldo += cantidad;
             numeroDepositos++;
+        } else {
+            System.out.println("El valor no puede ser menor que 0");
         }
     }
 
